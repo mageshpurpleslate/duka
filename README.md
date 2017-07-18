@@ -10,11 +10,11 @@ Employees in corporate, would need to purchase things for their daily need. Whil
 - Creates a transparent purchasing process
 - Can help to automate purchasing process
 
-## What does _ Duka _ do? 
+## What does _Duka_ do? 
 
 Duka means shop or store in Swahili. 
 
-** Usage Instructions **
+**Usage Instructions**
 - Duka Bot can be installed by corporates slack admin. 
 - Admin can create a slack channel for procurement and invite procurement team there. 
 - Admin can invite employees to Duka Bot
