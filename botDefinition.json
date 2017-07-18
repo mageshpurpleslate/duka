@@ -1,0 +1,554 @@
+{
+  "name": "AmazonShoppingBot",
+  "description": null,
+  "intents": [
+    {
+      "intentName": "PostSlackMessage",
+      "intentVersion": "11"
+    },
+    {
+      "intentName": "Greeting",
+      "intentVersion": "4"
+    },
+    {
+      "intentName": "BuyMobilePhone",
+      "intentVersion": "25"
+    },
+    {
+      "intentName": "BookLaptop",
+      "intentVersion": "4"
+    }
+  ],
+  "clarificationPrompt": {
+    "messages": [
+      {
+        "contentType": "PlainText",
+        "content": "Oops. I din't get that. These are some keywords that I understand. \"Buy Laptop\", \"Buy Mobile\""
+      }
+    ],
+    "maxAttempts": 3,
+    "responseCard": null
+  },
+  "abortStatement": {
+    "messages": [
+      {
+        "contentType": "PlainText",
+        "content": "Sorry, I could not understand. Goodbye."
+      }
+    ],
+    "responseCard": null
+  },
+  "status": "READY",
+  "failureReason": null,
+  "lastUpdatedDate": "2017-07-18T11:30:06.668Z",
+  "createdDate": "2017-06-25T03:39:50.773Z",
+  "idleSessionTTLInSeconds": 180,
+  "voiceId": "0",
+  "checksum": "6c7c2d1d-dca4-4902-8b9b-cf5ee7ebac81",
+  "version": "$LATEST",
+  "locale": "en-US",
+  "childDirected": false,
+  "dependencies": {
+    "intents": [
+      {
+        "name": "Greeting",
+        "description": null,
+        "slots": [
+          
+        ],
+        "sampleUtterances": [
+          "Hi",
+          "Hello",
+          "Good morning",
+          "Good afternoon",
+          "Yo",
+          "Hi How are you"
+        ],
+        "fulfillmentActivity": {
+          "type": "CodeHook",
+          "codeHook": {
+            "uri": "arn:aws:lambda:us-east-1:188137944565:function:BotGreeting",
+            "messageVersion": "1.0"
+          }
+        },
+        "parentIntentSignature": null,
+        "lastUpdatedDate": "2017-07-18T10:33:09.140Z",
+        "createdDate": "2017-07-18T10:33:09.140Z",
+        "version": "4",
+        "checksum": "87b5dd77-ff0e-447d-b06d-0f7f06ed21ef"
+      },
+      {
+        "name": "PostSlackMessage",
+        "description": null,
+        "slots": [
+          {
+            "name": "BookedItem",
+            "description": null,
+            "slotConstraint": "Required",
+            "slotType": "AMAZON.NUMBER",
+            "slotTypeVersion": null,
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "Item to be approved ? "
+                }
+              ],
+              "maxAttempts": 2,
+              "responseCard": null
+            },
+            "priority": 1,
+            "sampleUtterances": [
+              
+            ],
+            "responseCard": null
+          }
+        ],
+        "sampleUtterances": [
+          "Approve",
+          "Approve {BookedItem}"
+        ],
+        "fulfillmentActivity": {
+          "type": "CodeHook",
+          "codeHook": {
+            "uri": "arn:aws:lambda:us-east-1:188137944565:function:PostMessageToSlack",
+            "messageVersion": "1.0"
+          }
+        },
+        "parentIntentSignature": null,
+        "lastUpdatedDate": "2017-07-17T15:20:39.658Z",
+        "createdDate": "2017-07-17T15:20:39.658Z",
+        "version": "11",
+        "checksum": "38621800-7754-4adb-9199-bc6250838c4b"
+      },
+      {
+        "name": "BookLaptop",
+        "description": null,
+        "slots": [
+          {
+            "name": "LaptopCPU",
+            "description": null,
+            "slotConstraint": "Required",
+            "slotType": "LaptopCPU",
+            "slotTypeVersion": "1",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "What describes your work?"
+                }
+              ],
+              "maxAttempts": 2,
+              "responseCard": "{\"version\":1,\"contentType\":\"application/vnd.amazonaws.card.generic\",\"genericAttachments\":[{\"subTitle\":\"Dual core\",\"title\":\"My work is not CPU intensive\",\"buttons\":[{\"text\":\"Choose this\",\"value\":\"Dual\"}]},{\"subTitle\":\"Quad Core\",\"title\":\"I run CPU intensive Programs\",\"buttons\":[{\"text\":\"Choose this\",\"value\":\"Quad\"}]},{\"subTitle\":\"Octa Core\",\"title\":\"I am in to AI algorithms\",\"buttons\":[{\"text\":\"Choose this\",\"value\":\"Octa\"}]}]}"
+            },
+            "priority": 3,
+            "sampleUtterances": [
+              
+            ],
+            "responseCard": null
+          },
+          {
+            "name": "LaptopBrand",
+            "description": null,
+            "slotConstraint": "Required",
+            "slotType": "LaptopBrand",
+            "slotTypeVersion": "1",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "Which one do you like?"
+                }
+              ],
+              "maxAttempts": 2,
+              "responseCard": "{\"version\":1,\"contentType\":\"application/vnd.amazonaws.card.generic\",\"genericAttachments\":[{\"subTitle\":\"Good Buy\",\"title\":\"Lenova\",\"buttons\":[{\"text\":\"Choose This\",\"value\":\"Lenova\"}]},{\"subTitle\":\"Popular One\",\"title\":\"DELL\",\"buttons\":[{\"text\":\"Choose this\",\"value\":\"DELL\"}]},{\"subTitle\":\"Most of us like this\",\"title\":\"MacBook\",\"buttons\":[{\"text\":\"MacBook\",\"value\":\"MacBook\"}]}]}"
+            },
+            "priority": 1,
+            "sampleUtterances": [
+              
+            ],
+            "responseCard": null
+          },
+          {
+            "name": "LaptopRAM",
+            "description": null,
+            "slotConstraint": "Required",
+            "slotType": "LaptopRAM",
+            "slotTypeVersion": "1",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "How much memory you may need ?"
+                }
+              ],
+              "maxAttempts": 2,
+              "responseCard": "{\"version\":1,\"contentType\":\"application/vnd.amazonaws.card.generic\",\"genericAttachments\":[{\"subTitle\":\"4GB\",\"title\":\"Beginner\",\"buttons\":[{\"text\":\"Choose this\",\"value\":\"4 GB\"}]},{\"subTitle\":\"8 GB\",\"title\":\"Good for Engineers\",\"buttons\":[{\"text\":\"Choose this\",\"value\":\"8 GB\"}]},{\"subTitle\":\"16 GB\",\"title\":\"You can Run a server\",\"buttons\":[{\"text\":\"Choose This\",\"value\":\"16 GB\"}]}]}"
+            },
+            "priority": 2,
+            "sampleUtterances": [
+              
+            ],
+            "responseCard": null
+          }
+        ],
+        "sampleUtterances": [
+          "I want to Book Laptop",
+          "Book Laptop",
+          "Laptop",
+          "Buy Laptop",
+          "Can you please order a Laptop for me",
+          "Order Laptop",
+          "I want to book NoteBook",
+          "NoteBook"
+        ],
+        "confirmationPrompt": {
+          "messages": [
+            {
+              "contentType": "PlainText",
+              "content": "So, you have chosen {LaptopBrand}, {LaptopCPU} core machine with {LaptopRAM} RAM. Am I good to place this order?"
+            }
+          ],
+          "maxAttempts": 3,
+          "responseCard": null
+        },
+        "rejectionStatement": {
+          "messages": [
+            {
+              "contentType": "PlainText",
+              "content": "Alright, I am not forwarding your request now. Think and choose again."
+            }
+          ],
+          "responseCard": null
+        },
+        "followUpPrompt": {
+          "prompt": {
+            "messages": [
+              {
+                "contentType": "PlainText",
+                "content": "Your Booking is done. Anything else ?"
+              }
+            ],
+            "maxAttempts": 3,
+            "responseCard": null
+          },
+          "rejectionStatement": {
+            "messages": [
+              {
+                "contentType": "PlainText",
+                "content": "Great. Have a good Day"
+              }
+            ],
+            "responseCard": null
+          }
+        },
+        "fulfillmentActivity": {
+          "type": "CodeHook",
+          "codeHook": {
+            "uri": "arn:aws:lambda:us-east-1:188137944565:function:GetProductDetails",
+            "messageVersion": "1.0"
+          }
+        },
+        "parentIntentSignature": null,
+        "lastUpdatedDate": "2017-07-18T11:29:42.724Z",
+        "createdDate": "2017-07-18T11:29:42.724Z",
+        "version": "4",
+        "checksum": "8017c28c-6654-4086-986a-93b45e802456"
+      },
+      {
+        "name": "BuyMobilePhone",
+        "description": null,
+        "slots": [
+          {
+            "name": "core",
+            "description": null,
+            "slotConstraint": "Required",
+            "slotType": "CPUCoreUpdated",
+            "slotTypeVersion": "1",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "How fast would you like?"
+                }
+              ],
+              "maxAttempts": 2,
+              "responseCard": "{\"version\":1,\"contentType\":\"application/vnd.amazonaws.card.generic\",\"genericAttachments\":[{\"subTitle\":\"Beginner\",\"title\":\"Dual core\",\"buttons\":[{\"text\":\"Choose this\",\"value\":\"Dual\"}]},{\"subTitle\":\"Good for engineers\",\"title\":\"Quad Core\",\"buttons\":[{\"text\":\"Choose this\",\"value\":\"Quad\"}]},{\"subTitle\":\"Running heavy process\",\"title\":\"Octa core\",\"buttons\":[{\"text\":\"Choose this\",\"value\":\"Octs\"}]}]}"
+            },
+            "priority": 4,
+            "sampleUtterances": [
+              
+            ],
+            "responseCard": null
+          },
+          {
+            "name": "cameraResolution",
+            "description": null,
+            "slotConstraint": "Required",
+            "slotType": "CameraResolution",
+            "slotTypeVersion": "1",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "Do you enjoy Photography?"
+                }
+              ],
+              "maxAttempts": 2,
+              "responseCard": "{\"version\":1,\"contentType\":\"application/vnd.amazonaws.card.generic\",\"genericAttachments\":[{\"subTitle\":\"8MP\",\"title\":\"Good one\",\"buttons\":[{\"text\":\"8MP\",\"value\":\"8MP\"}]},{\"subTitle\":\"13MP\",\"title\":\"High resolution Camera\",\"buttons\":[{\"text\":\"13MP\",\"value\":\"13MP\"}]}]}"
+            },
+            "priority": 5,
+            "sampleUtterances": [
+              
+            ],
+            "responseCard": null
+          },
+          {
+            "name": "brand",
+            "description": null,
+            "slotConstraint": "Required",
+            "slotType": "MobileBrands",
+            "slotTypeVersion": "1",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "Which one do you like? "
+                }
+              ],
+              "maxAttempts": 2,
+              "responseCard": "{\"version\":1,\"contentType\":\"application/vnd.amazonaws.card.generic\",\"genericAttachments\":[{\"subTitle\":\"It is making waves\",\"title\":\"Redmi\",\"buttons\":[{\"text\":\"Choose this\",\"value\":\"Redmi\"}]},{\"subTitle\":\"Most of us use it\",\"title\":\"iPhone\",\"buttons\":[{\"text\":\"Choose this\",\"value\":\"iPhone\"}]},{\"subTitle\":\"New one from Google\",\"title\":\"Pixel\",\"buttons\":[{\"text\":\"Choose this\",\"value\":\"Pixel\"}]},{\"subTitle\":\"Good Buy\",\"title\":\"Samsung\",\"buttons\":[{\"text\":\"Choose this\",\"value\":\"Samsung\"}]}]}"
+            },
+            "priority": 1,
+            "sampleUtterances": [
+              
+            ],
+            "responseCard": null
+          },
+          {
+            "name": "ram",
+            "description": null,
+            "slotConstraint": "Required",
+            "slotType": "RAMSize",
+            "slotTypeVersion": "1",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "Let us choose a suitable RAM for this..."
+                }
+              ],
+              "maxAttempts": 2,
+              "responseCard": "{\"version\":1,\"contentType\":\"application/vnd.amazonaws.card.generic\",\"genericAttachments\":[{\"subTitle\":\"2 GB\",\"title\":\"Good for running Apps\",\"buttons\":[{\"text\":\"Choose this\",\"value\":\"2GB\"}]},{\"subTitle\":\"3 GB\",\"title\":\"Good for Rich UI\",\"buttons\":[{\"text\":\"Choose this\",\"value\":\"3GB\"}]},{\"subTitle\":\"4GB\",\"title\":\"Good for Mobile App Engineers\",\"buttons\":[{\"text\":\"Choose this\",\"value\":\"4GB\"}]}]}"
+            },
+            "priority": 2,
+            "sampleUtterances": [
+              
+            ],
+            "responseCard": null
+          }
+        ],
+        "sampleUtterances": [
+          "Mobile",
+          "Mobile Phone",
+          "Buy Mobile",
+          "Buy Mobile Phone",
+          "Buy {brand} phone"
+        ],
+        "confirmationPrompt": {
+          "messages": [
+            {
+              "contentType": "PlainText",
+              "content": "So, you have chosen {ram}, {core}, {cameraResolution}, {brand} phone. Am I good to place this order?"
+            }
+          ],
+          "maxAttempts": 3,
+          "responseCard": null
+        },
+        "rejectionStatement": {
+          "messages": [
+            {
+              "contentType": "PlainText",
+              "content": "Okay. Your order will not be placed."
+            }
+          ],
+          "responseCard": null
+        },
+        "followUpPrompt": {
+          "prompt": {
+            "messages": [
+              {
+                "contentType": "PlainText",
+                "content": "Type \"Approve\" to confirm you want to order this mobile ?"
+              }
+            ],
+            "maxAttempts": 3,
+            "responseCard": null
+          },
+          "rejectionStatement": {
+            "messages": [
+              {
+                "contentType": "PlainText",
+                "content": "Cool. We will not proceed with the order."
+              }
+            ],
+            "responseCard": null
+          }
+        },
+        "fulfillmentActivity": {
+          "type": "CodeHook",
+          "codeHook": {
+            "uri": "arn:aws:lambda:us-east-1:188137944565:function:GetProductDetails",
+            "messageVersion": "1.0"
+          }
+        },
+        "parentIntentSignature": null,
+        "lastUpdatedDate": "2017-07-18T11:29:42.768Z",
+        "createdDate": "2017-07-18T11:29:42.768Z",
+        "version": "25",
+        "checksum": "ac9d798a-84ba-4a41-ba8a-4d788eb0667e"
+      }
+    ],
+    "slotTypes": [
+      {
+        "name": "LaptopRAM",
+        "description": "RAM for Laptop",
+        "enumerationValues": [
+          {
+            "value": "8 GB"
+          },
+          {
+            "value": "16 GB"
+          },
+          {
+            "value": "4 GB"
+          }
+        ],
+        "lastUpdatedDate": "2017-07-17T13:13:34.137Z",
+        "createdDate": "2017-07-17T13:13:34.137Z",
+        "version": "1",
+        "checksum": null
+      },
+      {
+        "name": "MobileBrands",
+        "description": "List of Mobile Brand",
+        "enumerationValues": [
+          {
+            "value": "iPhone"
+          },
+          {
+            "value": "Samsung"
+          },
+          {
+            "value": "Any"
+          },
+          {
+            "value": "Pixel"
+          },
+          {
+            "value": "Redmi"
+          }
+        ],
+        "lastUpdatedDate": "2017-06-25T06:22:28.084Z",
+        "createdDate": "2017-06-25T06:22:28.084Z",
+        "version": "1",
+        "checksum": null
+      },
+      {
+        "name": "CameraResolution",
+        "description": "Resolution of the camera",
+        "enumerationValues": [
+          {
+            "value": "13MP"
+          },
+          {
+            "value": "8MP"
+          },
+          {
+            "value": "16MP"
+          }
+        ],
+        "lastUpdatedDate": "2017-06-25T06:39:35.103Z",
+        "createdDate": "2017-06-25T06:39:35.103Z",
+        "version": "1",
+        "checksum": null
+      },
+      {
+        "name": "LaptopBrand",
+        "description": "Brand of Laptop",
+        "enumerationValues": [
+          {
+            "value": "MacBook"
+          },
+          {
+            "value": "Lenova"
+          },
+          {
+            "value": "DELL"
+          }
+        ],
+        "lastUpdatedDate": "2017-07-17T13:04:24.949Z",
+        "createdDate": "2017-07-17T13:04:24.949Z",
+        "version": "1",
+        "checksum": null
+      },
+      {
+        "name": "LaptopCPU",
+        "description": "Laptop CPU",
+        "enumerationValues": [
+          {
+            "value": "Quad"
+          },
+          {
+            "value": "Octa"
+          },
+          {
+            "value": "Dual"
+          }
+        ],
+        "lastUpdatedDate": "2017-07-17T13:24:08.275Z",
+        "createdDate": "2017-07-17T13:24:08.275Z",
+        "version": "1",
+        "checksum": null
+      },
+      {
+        "name": "CPUCoreUpdated",
+        "description": "CPU Cores",
+        "enumerationValues": [
+          {
+            "value": "Quad"
+          },
+          {
+            "value": "Octs"
+          },
+          {
+            "value": "Dual"
+          }
+        ],
+        "lastUpdatedDate": "2017-07-13T12:32:41.077Z",
+        "createdDate": "2017-07-13T12:32:41.077Z",
+        "version": "1",
+        "checksum": null
+      },
+      {
+        "name": "RAMSize",
+        "description": "Size of the RAM",
+        "enumerationValues": [
+          {
+            "value": "2GB"
+          },
+          {
+            "value": "3GB"
+          },
+          {
+            "value": "4GB"
+          }
+        ],
+        "lastUpdatedDate": "2017-06-25T06:23:09.799Z",
+        "createdDate": "2017-06-25T06:23:09.799Z",
+        "version": "1",
+        "checksum": null
+      }
+    ]
+  }
+}
