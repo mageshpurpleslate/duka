@@ -1,5 +1,6 @@
-C
-## Corporate procurement assistant
+# Duka - Corporate Procurement Assistant
+
+## Motivation behind it
 
 Employees in corporate, would need to purchase things for their daily need. While corporate has a list of items to offer for employees, letting employees choose the items they want would help in multiple ways.
 
@@ -7,8 +8,7 @@ Employees in corporate, would need to purchase things for their daily need. Whil
 - Employee satisfaction
 - Employee may get to see what best alternatives available 
 - Creates a transparent purchasing process
-
-Amazon 
+- Can help to automate purchasing process
 
 ## What does _ Duka _ do? 
 
